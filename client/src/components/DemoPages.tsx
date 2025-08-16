@@ -21,19 +21,19 @@ export function HomePage() {
   return (
     <div className="space-y-6">
       {/* Hero Section */}
-      <div className="text-center py-12 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+      <div className="text-center py-12 gradient-card-blue rounded-xl backdrop-blur-sm">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent mb-4">
           🏠 Welcome to Analytics Demo
         </h1>
-        <p className="text-xl text-gray-600 mb-6 max-w-2xl mx-auto">
+        <p className="text-xl text-muted-foreground mb-6 max-w-2xl mx-auto">
           This is a demonstration of our comprehensive analytics tracking system. 
           Every page view, interaction, and user behavior is being tracked in real-time.
         </p>
         <div className="flex items-center justify-center gap-4">
-          <Badge variant="default" className="text-lg px-4 py-2">
+          <Badge variant="default" className="text-lg px-4 py-2 enhanced-badge status-active">
             📊 Tracking Active
           </Badge>
-          <Badge variant="secondary" className="text-lg px-4 py-2">
+          <Badge variant="secondary" className="text-lg px-4 py-2 enhanced-badge">
             🔄 Real-time Data
           </Badge>
         </div>
@@ -41,11 +41,11 @@ export function HomePage() {
 
       {/* Feature Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <Card className="hover:shadow-lg transition-shadow">
+        <Card className="demo-card gradient-card-green">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               👥 User Tracking
-              <Badge variant="outline">Active</Badge>
+              <Badge variant="outline" className="enhanced-badge">Active</Badge>
             </CardTitle>
             <CardDescription>
               Automatically detects new vs returning users
@@ -69,11 +69,11 @@ export function HomePage() {
           </CardContent>
         </Card>
 
-        <Card className="hover:shadow-lg transition-shadow">
+        <Card className="demo-card gradient-card-blue">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               🌍 Geographic Data
-              <Badge variant="outline">Global</Badge>
+              <Badge variant="outline" className="enhanced-badge">Global</Badge>
             </CardTitle>
             <CardDescription>
               Location-based user insights
@@ -97,11 +97,11 @@ export function HomePage() {
           </CardContent>
         </Card>
 
-        <Card className="hover:shadow-lg transition-shadow">
+        <Card className="demo-card gradient-card-purple">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               📱 Device Intelligence
-              <Badge variant="outline">Multi-platform</Badge>
+              <Badge variant="outline" className="enhanced-badge">Multi-platform</Badge>
             </CardTitle>
             <CardDescription>
               Comprehensive device and browser data
@@ -139,11 +139,11 @@ export function HomePage() {
             <Button 
               onClick={handleInteraction}
               size="lg"
-              className="text-lg px-8 py-3"
+              className="text-lg px-8 py-3 enhanced-button"
             >
               🎯 Track This Click!
             </Button>
-            <Badge variant="secondary" className="text-lg px-4 py-2">
+            <Badge variant="secondary" className="text-lg px-4 py-2 enhanced-badge">
               Clicks: {clickCount}
             </Badge>
           </div>
@@ -221,14 +221,14 @@ export function AboutPage() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="text-center py-8 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">
+      <div className="text-center py-8 gradient-card-green rounded-xl backdrop-blur-sm">
+        <h1 className="text-4xl font-bold bg-gradient-to-r from-green-500 to-emerald-500 bg-clip-text text-transparent mb-4">
           🔍 About Our Analytics System
         </h1>
-        <p className="text-xl text-gray-600 mb-4">
+        <p className="text-xl text-muted-foreground mb-4">
           Learn how our comprehensive tracking system works
         </p>
-        <Badge variant="secondary" className="text-lg px-4 py-2">
+        <Badge variant="secondary" className="text-lg px-4 py-2 enhanced-badge">
           ⏱️ Reading Time: {Math.floor(readTime / 60)}m {readTime % 60}s
         </Badge>
       </div>
@@ -336,21 +336,21 @@ export function AboutPage() {
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center p-4 border rounded-lg">
+            <div className="text-center p-4 border rounded-lg demo-card gradient-card-blue">
               <div className="text-3xl mb-2">🎯</div>
               <h3 className="font-semibold mb-2">Tracking Component</h3>
               <p className="text-sm text-muted-foreground">
                 React component that automatically tracks page views and user interactions
               </p>
             </div>
-            <div className="text-center p-4 border rounded-lg">
+            <div className="text-center p-4 border rounded-lg demo-card gradient-card-green">
               <div className="text-3xl mb-2">🔄</div>
               <h3 className="font-semibold mb-2">tRPC API</h3>
               <p className="text-sm text-muted-foreground">
                 Type-safe API communication between frontend and analytics backend
               </p>
             </div>
-            <div className="text-center p-4 border rounded-lg">
+            <div className="text-center p-4 border rounded-lg demo-card gradient-card-purple">
               <div className="text-3xl mb-2">🗄️</div>
               <h3 className="font-semibold mb-2">PostgreSQL</h3>
               <p className="text-sm text-muted-foreground">
@@ -359,9 +359,9 @@ export function AboutPage() {
             </div>
           </div>
 
-          <div className="bg-muted p-6 rounded-lg">
+          <div className="bg-muted/30 p-6 rounded-lg backdrop-blur-sm border">
             <h3 className="font-semibold mb-3">📝 Integration Example:</h3>
-            <pre className="text-sm bg-background p-4 rounded border overflow-x-auto">
+            <pre className="text-sm code-block">
               <code>{`// Add to your React app
 import { AnalyticsTracker } from './AnalyticsTracker';
 

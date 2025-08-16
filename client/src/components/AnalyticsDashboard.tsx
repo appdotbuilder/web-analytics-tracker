@@ -169,53 +169,61 @@ export function AnalyticsDashboard({ className = '' }: AnalyticsDashboardProps) 
       {/* Summary Statistics */}
       {summary && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <Card>
+          <Card className="metric-card gradient-card-blue">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">👥 Total Users</CardTitle>
-              <span className="text-2xl">👥</span>
+              <span className="text-2xl animate-pulse">👥</span>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{summary.total_users}</div>
+              <div className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+                {summary.total_users}
+              </div>
               <div className="flex gap-2 mt-2">
-                <Badge variant="secondary">New: {summary.new_users}</Badge>
-                <Badge variant="outline">Returning: {summary.returning_users}</Badge>
+                <Badge variant="secondary" className="enhanced-badge">New: {summary.new_users}</Badge>
+                <Badge variant="outline" className="enhanced-badge">Returning: {summary.returning_users}</Badge>
               </div>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="metric-card gradient-card-green">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">📈 Total Sessions</CardTitle>
-              <span className="text-2xl">📈</span>
+              <span className="text-2xl animate-pulse">📈</span>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{summary.total_sessions}</div>
+              <div className="text-2xl font-bold bg-gradient-to-r from-green-500 to-green-400 bg-clip-text text-transparent">
+                {summary.total_sessions}
+              </div>
               <p className="text-xs text-muted-foreground mt-2">
                 Avg Duration: {formatDuration(summary.average_session_duration)}
               </p>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="metric-card gradient-card-purple">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">👁️ Page Views</CardTitle>
-              <span className="text-2xl">👁️</span>
+              <span className="text-2xl animate-pulse">👁️</span>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{summary.total_page_views}</div>
+              <div className="text-2xl font-bold bg-gradient-to-r from-purple-500 to-purple-400 bg-clip-text text-transparent">
+                {summary.total_page_views}
+              </div>
               <p className="text-xs text-muted-foreground mt-2">
                 Total page impressions
               </p>
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="metric-card gradient-card-amber">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm font-medium">🔄 Bounce Rate</CardTitle>
-              <span className="text-2xl">🔄</span>
+              <span className="text-2xl animate-pulse">🔄</span>
             </CardHeader>
             <CardContent>
-              <div className="text-2xl font-bold">{(summary.bounce_rate * 100).toFixed(1)}%</div>
+              <div className="text-2xl font-bold bg-gradient-to-r from-amber-500 to-amber-400 bg-clip-text text-transparent">
+                {(summary.bounce_rate * 100).toFixed(1)}%
+              </div>
               <p className="text-xs text-muted-foreground mt-2">
                 Single page sessions
               </p>
@@ -449,25 +457,25 @@ export function AnalyticsDashboard({ className = '' }: AnalyticsDashboardProps) 
               <CardContent className="space-y-4">
                 {summary ? (
                   <>
-                    <div className="p-4 bg-blue-50 rounded-lg border-l-4 border-blue-400">
-                      <h4 className="font-semibold text-blue-900">User Growth</h4>
-                      <p className="text-sm text-blue-800">
+                    <div className="p-4 rounded-lg insight-card-blue">
+                      <h4 className="font-semibold text-blue-700 dark:text-blue-300">User Growth</h4>
+                      <p className="text-sm text-blue-600 dark:text-blue-200">
                         {summary.new_users > summary.returning_users 
                           ? "🚀 Growing user base with more new users than returning users"
                           : "📈 Strong user retention with more returning visitors"
                         }
                       </p>
                     </div>
-                    <div className="p-4 bg-green-50 rounded-lg border-l-4 border-green-400">
-                      <h4 className="font-semibold text-green-900">Engagement</h4>
-                      <p className="text-sm text-green-800">
+                    <div className="p-4 rounded-lg insight-card-green">
+                      <h4 className="font-semibold text-green-700 dark:text-green-300">Engagement</h4>
+                      <p className="text-sm text-green-600 dark:text-green-200">
                         Average session duration: {formatDuration(summary.average_session_duration)}
                         {summary.average_session_duration > 180 ? " (Great engagement! 🎉)" : " (Room for improvement 📈)"}
                       </p>
                     </div>
-                    <div className="p-4 bg-amber-50 rounded-lg border-l-4 border-amber-400">
-                      <h4 className="font-semibold text-amber-900">Bounce Rate</h4>
-                      <p className="text-sm text-amber-800">
+                    <div className="p-4 rounded-lg insight-card-amber">
+                      <h4 className="font-semibold text-amber-700 dark:text-amber-300">Bounce Rate</h4>
+                      <p className="text-sm text-amber-600 dark:text-amber-200">
                         {summary.bounce_rate < 0.4 
                           ? "✅ Excellent bounce rate - users are exploring multiple pages"
                           : summary.bounce_rate < 0.6 
